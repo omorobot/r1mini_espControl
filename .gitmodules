@@ -1,0 +1,3 @@
+[submodule "src/WiFiManager"]
+	path = src/WiFiManager
+	url = https://github.com/tzapu/WiFiManager.git

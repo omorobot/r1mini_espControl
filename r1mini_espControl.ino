@@ -5,7 +5,7 @@
 #include <DNSServer.h>
 #include <WebSocketsServer.h>                   //https://github.com/Links2004/arduinoWebSockets
 #include <ArduinoJson.h>      //https://arduinojson.org/?utm_source=meta&utm_medium=library.properties
-#include "src/WiFiManager/WiFiManager.h"          //https://github.com/kentaylor/WiFiManager
+#include "src/WiFiManager/WiFiManager.h"          //https://github.com/tzapu/WiFiManager
 #include <ESP8266HTTPUpdateServer.h>
 #include <SoftwareSerial.h>
 #include <FS.h>         //Inlcude SPIFFS library
