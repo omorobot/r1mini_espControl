@@ -1,0 +1,134 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">		
+		<!-- style을 적용하기 위한 css 파일 경로 추가-->
+		<link rel="stylesheet" href="styles.css">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<!-- javascript 파일 불러오는 경로 추가 -->
+		<script src="app.js" type="text/javascript"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.min.js"></script>
+	</head>
+	<body>
+		<p>Color Picker</p>
+		<div class="container1">
+		<div class="row">
+			<div class="col-sm-2">
+				HEAD LED
+			</div>
+			<div class="col-sm-2">
+				<label class="switch">
+            <input type="checkbox" id="TOGGLE_1" onclick="sendToggleState(0,this.checked);">
+            <span class="toggleSlider round"></span>
+				</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-2">
+				Pick a Color
+			</div>
+			<div class="col-sm-2">
+			<input class="jscolor {onFineChange:'updateColor(this)'}" id="rgb">
+			</div>
+		</div></div>
+		<script>
+			function updateColor(picker) 
+			{
+				document.getElementById('rgb').innerHTML = Math.round(picker.rgb[0]) + ', ' +  Math.round(picker.rgb[1]) + ', ' + Math.round(picker.rgb[2]);
+				//document.getElementById("change_color").href="?r=" + Math.round(picker.rgb[0]*4.0117) + "&g=" +  Math.round(picker.rgb[1]*4.0117) + "&b=" + Math.round(picker.rgb[2]*4.0117);
+				var xhr = new XMLHttpRequest();
+				xhr.open('PUT', "./jsData.html?type=2&R="+picker.rgb[0]+"&G="+picker.rgb[1]+"&B="+picker.rgb[2]);
+				xhr.send();
+				setTimeout(function(){xhr.abort();},100);
+			}
+		</script>
+		<!--
+		<p>Custom range slider:</p>
+		<div class="slidecontainer">
+			<input type="range" id="rangeInput" name="rangeInput" min="0" max="100" value="0" step="1" oninput="updateRangeInput(this.value);">
+			<output name="amount" id="rangeValue" for="rangeInput">0</output>
+			</div>
+		</div>
+		<script>
+			updateRangeInput('0');
+		
+			function updateRangeInput(val)
+			{
+			  	document.getElementById('rangeValue').value=val; //update current slider value
+			  	// do other action here
+			  	var xhr = new XMLHttpRequest();
+				xhr.open('PUT', "./jsData.html?type=2&val="+val)
+				xhr.send();
+				setTimeout(function(){xhr.abort();},100);
+			}
+		</script>
+	-->
+		<div id="container"></div>
+		<div id="info">
+			<span id="result"></span>
+		</div> 
+		<script src="./virtualjoystick.js"></script>
+		<script>
+			console.log("touchscreen is", VirtualJoystick.touchScreenAvailable() ? "available" : "not available");
+	
+			var joystick	= new VirtualJoystick({
+				container	: document.getElementById('container'),
+				mouseSupport	: true,
+				limitStickTravel	: true,
+			});
+			joystick.addEventListener('touchStart', function(){
+				console.log('down')
+			})
+			joystick.addEventListener('touchEnd', function(){
+				console.log('up')
+			})
+			var prevX = 0;
+			var prevY = 0;
+			var newX = 0;
+			var newY = 0;
+			setInterval(function(){
+				var outputEl	= document.getElementById('result');
+				newX = Math.round(joystick.deltaX());
+				newY = Math.round(joystick.deltaY());
+				outputEl.innerHTML	= '<b>Joystick Position:</b> '
+					+ ' X:'+newX
+					+ ' Y:'+newY;
+				if ( newX != prevX || newY != prevY || newX!=0 || newY!=0){
+					var xhr = new XMLHttpRequest();
+					xhr.open('PUT', "./jsData.html?type=1&x="+newX+"&y="+newY)
+					xhr.send();
+					setTimeout(function(){xhr.abort();},100);
+				}
+				prevX = newX;
+				prevY = newY;
+			}, 100);
+		</script>
+
+		<script>
+		let console_window = document.getElementById('console-window')
+
+		let websocket = new WebSocket('ws://'+window.location.href.split('://')[1]+'browser')
+		websocket.onopen = function(){
+			console.log('websocket open.')
+		}
+		</script>
+		<script>
+			var myTimer = setInterval(myTimerFunc, 1000)
+			var startTime = Math.floor(Date.now() / 1000)
+			function myTimerFunc() {
+				var elapsedTime = Math.floor(Date.now() / 1000) - startTime
+				console.log(elapsedTime)
+				if(websocket.readyState === WebSocket.OPEN) {
+					websocket.send(JSON.stringify({
+						event_name:'Heartbeat',
+						intVal: elapsedTime.toString()
+					}))
+				}
+			}
+		</script>
+	</body>
+</html>

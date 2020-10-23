@@ -1,0 +1,146 @@
+body {
+    overflow	: hidden;
+    padding		: 0;
+    margin		: 0;
+    background-color: #BBB;
+}
+
+#info {
+    position	: absolute;
+    top		: 0px;
+    width		: 100%;
+    padding		: 5px;
+    text-align	: center;
+}
+#info a {
+    color		: #66F;
+    text-decoration	: none;
+}
+#info a:hover {
+    text-decoration	: underline;
+}
+#container1 {
+    width		: 100%;
+    height		: 20%;
+    overflow	: hidden;
+    padding		: 0;
+    margin		: 0;
+    margin-left: 30px;
+    -webkit-user-select	: none;
+    -moz-user-select	: none;
+}
+#container {
+    width		: 100%;
+    height		: 80%;
+    overflow	: hidden;
+    padding		: 0;
+    margin		: 0;
+    margin-left: 30px;
+    -webkit-user-select	: none;
+    -moz-user-select	: none;
+}
+#slidecontainer {
+    width: 100%; /* Width of the outside container */
+  }
+  
+  /* The slider itself */
+  #slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+  
+  /* Mouse-over effects */
+  #slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  #slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #4CAF50; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+  
+  #slider::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #4CAF50; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+  /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The toggle slider */
+.toggleSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.toggleSlider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .toggleSlider {
+  background-color: #2196F3;
+}
+
+input:focus + .toggleSlider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .toggleSlider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+/* Rounded sliders */
+.toggleSlider.round {
+  border-radius: 34px;
+}
+
+.toggleSlider.round:before {
+  border-radius: 50%;
+}
+
+/* Slider input */
+.slidecontainer {
+  width: 100%;
+}
