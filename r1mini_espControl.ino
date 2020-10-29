@@ -10,40 +10,40 @@
 #include <SoftwareSerial.h>
 #include <FS.h>         //Inlcude SPIFFS library
 
-File                  fsUploadFile;    // a File object to temporarily store the received file
+File                      fsUploadFile;    // a File object to temporarily store the received file
 // SoftwareSerial ---------------------------------
-SoftwareSerial        swSer;             
-const int             SWSER_RX_PIN =          14; //D5 Pin
-const int             SWSER_TX_PIN =          12; //D6 Pin
+SoftwareSerial            swSer;             
+const int                 SWSER_RX_PIN =          14; //D5 Pin
+const int                 SWSER_TX_PIN =          12; //D6 Pin
 // Hardware Configurations  ------------------------------------------------------------
-const int             PIN_LED_ONBOARD =       D4;//LED onboard ESP-12E module
-const int             PIN_LED_STATUS =        D2;//D2 connected to ESPIO4
+const int                 PIN_LED_ONBOARD =       D4;//LED onboard ESP-12E module
+const int                 PIN_LED_STATUS =        D2;//D2 connected to ESPIO4
 #define LED_ONBOARD_ON    digitalWrite(PIN_LED_ONBOARD, LOW)
 #define LED_ONBOARD_OFF   digitalWrite(PIN_LED_ONBOARD, HIGH)
 #define LED_STATUS_ON     digitalWrite(PIN_LED_STATUS, LOW)
 #define LED_STATUS_OFF    digitalWrite(PIN_LED_STATUS, HIGH)
-bool                  ledState = false;
-unsigned long         status_led_last_millis = 0; 
+bool                      ledState = false;
+unsigned long             status_led_last_millis = 0; 
 // Input button Pins ------------------------------------------
-const int             PIN_INPUT_BTN = D1; //Input pin GPIO5
-bool                  btn_state =             false;
-unsigned long         btn_pressed_millis =    0;
+const int                 PIN_INPUT_BTN = D1; //Input pin GPIO5
+bool                      btn_state =             false;
+unsigned long             btn_pressed_millis =    0;
 
 //Set Wifi ssid and password -----------------------------------------------------------
-IPAddress             local_ip;       // Local IP address assigned by Router
-bool                  is_local_ip_sent =      false;
-bool                  is_AP_mode_set =        false;
-WiFiManager           wifiManager;
-const char*           host =                  "r1mini";
+IPAddress                 local_ip;       // Local IP address assigned by Router
+bool                      is_local_ip_sent =      false;
+bool                      is_AP_mode_set =        false;
+WiFiManager               wifiManager;
+const char*               host =                  "r1mini";
 //For parsing json format
-DynamicJsonDocument   d_doc(1024);                  // For JSON 6.0 over
-#define               DOC_SIZE                256   // JSON Document size For JSON 5.0
+DynamicJsonDocument       d_doc(1024);                  // For JSON 6.0 over
+#define                   DOC_SIZE                256   // JSON Document size For JSON 5.0
 StaticJsonDocument<DOC_SIZE> doc;
-JsonObject            root = doc.to<JsonObject>();
+JsonObject                root = doc.to<JsonObject>();
 
 // Set web server port number to 80
-ESP8266WebServer      server(80);
-WebSocketsServer      webSocket(81);    // create a websocket server on port 81
+ESP8266WebServer          server(80);
+WebSocketsServer          webSocket(81);    // create a websocket server on port 81
 
 
 void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght) { // When a WebSocket message is received
@@ -57,9 +57,8 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght
         Serial.printf("[%u] Connected from %d.%d.%d.%d url: %s\n", num, ip[0], ip[1], ip[2], ip[3], payload);
         Serial.println();
       }
-      break;
-    case WStype_TEXT:                     // if new text data is received
-    {
+    break;
+    case WStype_TEXT: {                    // if new text data is received
       //Serial.printf("[%u] get Text: %s\r\n", num, payload);
       auto error = deserializeJson(d_doc, payload);
       if(error) {
@@ -80,8 +79,8 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght
         Serial.printf("[%d]$C%s,%d\r\n",num, bufCmd, data1);
         swSer.printf("$C%s,%d\r\n",bufCmd, data1);
       }
-    }
-      break;
+   }
+   break;
   }
 }
 
@@ -123,7 +122,7 @@ void run_AP_config(void) {
   server.stop();      //Stop server for Config portal to be working
   webSocket.close();  //Stop socket as well
   wifiManager.setConfigPortalTimeout(300); //If no access point name has been previously entered disable timeout.
-  if (!wifiManager.startConfigPortal("ESP8266_R1Mini", "password"))
+  if (!wifiManager.startConfigPortal("ESP8266_R1mini", "password"))
   { 
     Serial.println("Not connected to WiFi but continuing anyway.");
   } else {
