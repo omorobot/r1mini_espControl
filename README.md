@@ -1,5 +1,7 @@
 # ESP8266 based web controller for R1mini
 
+한국어 문서는 [다음](README_KR.md) 를 참조하십시오.
+
 ## Introduction
 [R1mini](https://www.omorobot.com/omo-r1mini "R1mini") is a smaller sized mobile robot platform from omorobot.com and is equipped with ESP8266 module so that you can upload your own arduino sketch and control the robot directly from the board.
 
