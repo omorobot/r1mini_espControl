@@ -65,17 +65,21 @@ git clone https://github.com/omorobot/r1mini_espControl.git
 ```
 /Users/Sid/Documents/Arduino/libraries/WIFIMANAGER-ESP32-master/WiFiManager.h:36:22: error: 'const char HTTP_HEAD []' redeclared as different kind of symbol
 ```
+
  - 웹 소켓 통신을 위한 라이브러리 [Arduino WebSocket](https://github.com/Links2004/arduinoWebSockets)  
  - Json 포맷을 파싱하기 위한 라이브러리 [Arduino Json](https://github.com/bblanchon/ArduinoJson)  
 
 
 ### esp8266 파일시스템 업로더 설치
 
-웹서버를 열고 사용자 입력을 받기 위해서 .html, .js 그리고 .css 파일등이 data 폴더 안에 존재합니다. 이 파일을 ESP8266 모듈의 플래시 영역에 업로드하기 위한 패키지가 필요합니다.
+/data 폴더 안에는 웹서버를 열고 사용자 입력을 받기 위한 .html, .js 그리고 .css 파일등이 존재합니다.  
+이 파일을 ESP8266 모듈의 플래시 영역에 업로드하기 위헤 다음을 수행합니다.  
+
 1. 다음 [링크](https://github.com/esp8266/arduino-esp8266fs-plugin/releases/tag/0.5.0 "FS uploader") 에서 zip 파일을 다운로드합니다.  
 
 2. 압축을 풀고 나온 ESP8266FS 폴더를 아듀이노의 스케치북 폴더 안에 'tools' 폴더에 복사합니다.  
 스케치북 폴더는 아듀이노 IDE의 파일 -> 환경설정 메뉴에서 확인할 수 있습니다.  
+
 <div align="center">
   <img src="images/sketch_folder.png" width="600"/>
 </div>
@@ -105,12 +109,12 @@ ESP32 모듈에 할당된 IP를 모르는 경우 다음을 수행하여 AP 모�
 5. 스마트폰 혹은 태블릿을 열고 위와 같이 설정된 AP를 찾아서 접속합니다.  
 <div align="center">
   <img src="images/search_r1m.jpg" width="400"/>
-</div>
-6. 성공적으로 접속하게되면 설정 페이지가 자동으로 뜹니다. 또는 브라우저에서 192.168.4.1 로 접속을 시도합니다.
+</div>  
+6. 성공적으로 접속하게되면 설정 페이지가 자동으로 뜹니다. 또는 브라우저에서 192.168.4.1 로 접속을 시도합니다.  
 <div align="center">
   <img src="images/r1m_ap_configure.jpg" width="400"/>
 </div>
-7. Configuration 버튼을 누른 후 접속하고자 하는 라우터의 SSID 를 선택하고 비밀번호를 저장합니다.
+7. Configuration 버튼을 누른 후 접속하고자 하는 라우터의 SSID 를 선택하고 비밀번호를 저장합니다.  
 <div align="center">
   <img src="images/search_wifi.jpg" width="400"/>
 </div>  
@@ -119,7 +123,7 @@ ESP32 모듈에 할당된 IP를 모르는 경우 다음을 수행하여 AP 모�
   <img src="images/r1m_ap_info.jpg" width="400"/>
 </div>
 9. Exit 버튼을 눌러 접속을 해재합니다.  
-10. 이제 휴대폰의 WiFi설정을 열어서 라우터에 접속합니다.
-11. 브라우저를 열고 ESP32모듈에 할당된 IP주소를 입력하여 로봇에 접속합니다.
+10. 이제 휴대폰의 WiFi설정을 열어서 라우터에 접속합니다.  
+11. 브라우저를 열고 ESP32모듈에 할당된 IP주소를 입력하여 로봇에 접속합니다.  
 
 
