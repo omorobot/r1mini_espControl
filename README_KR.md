@@ -5,12 +5,13 @@
 
 이 프로젝트는 R1-mini에 내장된 ESP32 보드를 통해 WiFi 라우터에 접속하여 웹 서버를 열고 브라우저를 통해 접근한 사용자의 입력을 로봇에 전달하는 데모 프로그램입니다.  
 
-이 프로그램을 통해 사용자는 로봇을 원격으로 제어하거나,  
+이 프로그램을 통해 사용자는 
+- 로봇을 원격으로 제어하거나,  
 <div align="center">
  <img src="images/REMOTE.gif" width="500"/>
 </div>
 
-로봇의 RGB LED 의 색상을 변경하거나 헤드라이트 LED를 켜고 끌 수 있습니다.  
+- 로봇의 RGB LED 의 색상을 변경하거나 헤드라이트 LED를 켜고 끌 수 있습니다.  
 
 <div align="center">
  <img src="images/RGB_LED.gif" width="500"/>
@@ -31,7 +32,7 @@
 <div align="center">
   <img src="images/arduino_preferences1.png" width="600"/>
 </div>
-확인을 눌러 설정을 저장합니다.
+확인을 눌러 설정을 저장합니다.  
 
 2. 보드를 추가하기 위해서는 툴 -> 보드: > 보드 매니저... 를 열어 esp8266 를 검색하고 아래 그림과 같이 우측 하단의 설치 버튼을 눌러 설치합니다.  
 <div align="center">
@@ -43,12 +44,24 @@
   <img src="images/arduino_select_board.png" width="600"/>
 </div>
 
+### 프로젝트 다운로드
+
+Arduino 스케치 폴더에 이 프로젝트를 다운로드하거나 스케치 폴더 안에서 git bash를 열어 다음을 수행합니다.
+```
+git clone https://github.com/omorobot/r1mini_espControl.git
+```
+
 ### 필요한 라이브러리
 
 소스를 빌드하기 위해서는 다음의 추가적인 라이브러리들이 필요합니다.
 
- - [Wifi manager](https://github.com/kentaylor/WiFiManager/) for connecting to WiFi router  
-  If following error message occurs, change HTTP_HEAD to HTTP_HEADER in any occcurance in WiFiManager.h WifiManager.cpp file
+ - [Wifi manager](https://github.com/kentaylor/WiFiManager/)는 WiFi 라우터에 접속하고 AP모드 설정을 위한 관리자 모듈입니다. 서브모듈로서 가져오기 위해 다음을 수행합니다.  
+ ```
+  cd r1mini_espControl
+  git submodule update --init --recursive
+ ```
+
+  https://github.com/kentaylor/WiFiManager/ 에서 라이브러리를 직접 복사하는 경우 다음과 같은 에러 메세지가 발생하게 되면 WiFiManager.h WifiManager.cpp 파일에 있는 HTTP_HEAD 항목을 HTTP_HEADER 로 변경합니다.  
 ```
 /Users/Sid/Documents/Arduino/libraries/WIFIMANAGER-ESP32-master/WiFiManager.h:36:22: error: 'const char HTTP_HEAD []' redeclared as different kind of symbol
 ```
@@ -72,7 +85,11 @@
   <img src="images/sketch_data_upload_menu.png" width="600"/>
 </div>
 
-## Uploading the sketch
+## 스케치 업로드 하기
+
+처음으로 빌드가 성공하게되면 먼저 data 폴더 안의 파일을 업로드하기 위해 툴->"ESP8266 Sketch Data Upload" 를 선택하여 파일을 업로드합니다.  
+
+다시 툴->포트 번호를 선택하고 상단 메뉴의 Upload 버튼을 눌러 코드를 업로드합니다.  
 
 ## 새로운 WiFi 라우터에 접속하기
 
