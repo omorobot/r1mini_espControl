@@ -92,8 +92,8 @@
 			var newY = 0;
 			setInterval(function(){
 				var outputEl	= document.getElementById('result');
-				newX = Math.round(joystick.deltaX());
-				newY = Math.round(joystick.deltaY());
+				newX = - Math.round(joystick.deltaX());	//Reversed
+				newY = - Math.round(joystick.deltaY());	//Rsversed
 				outputEl.innerHTML	= '<b>Joystick Position:</b> '
 					+ ' X:'+newX
 					+ ' Y:'+newY;
