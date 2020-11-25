@@ -1,11 +1,14 @@
 # ESP8266 웹 기반 R1-mini 제어
 
 ## 소개
-[R1-mini](https://www.omorobot.com/omo-r1mini "R1-mini") 는 ESP-12E/F 모듈이 장착된 소형 모바일 로봇 플랫폼으로서 arduino 호환 스케치를 업로드하여 직접 제어할 수 있습니다.  
+[R1-mini](https://www.omorobot.com/omo-r1mini "R1-mini") 는 오모로봇이 만든 소형 자율주행 로봇 플랫폼입니다.  
 
-이 프로젝트는 R1-mini에 내장된 ESP32 보드를 통해 WiFi 라우터에 접속하여 웹 서버를 열고 브라우저를 통해 접근한 사용자의 입력을 로봇에 전달하는 데모 프로그램입니다.  
+이 로봇 플랫폼에는 WiFi가 내장된 ESP-12E/F 모듈이 장착되어 arduino IDE로 작성된 스케치를 빌드/업로드하여 제어할 수 있습니다.  
 
-이 프로그램을 통해 사용자는 
+본 프로젝트는 R1-mini에 내장된 ESP32 보드를 통해 WiFi 라우터에 접속하여 웹 서버를 열고 브라우저를 통해 접근한 사용자의 입력을 로봇에 전달하는 데모 프로그램입니다.  
+
+이 프로그램을 통해 사용자는  
+
 - 로봇을 원격으로 제어하거나,  
 <div align="center">
  <img src="images/REMOTE.gif" width="500"/>
@@ -104,6 +107,9 @@ ESP32 모듈에 할당된 IP를 모르는 경우 다음을 수행하여 AP 모�
 
 1. 로봇을 켭니다.  
 2. **D1** 버튼을 누른 후 ESP32 **내장LED** 가 켜질때까지 기다립니다.  
+<div align="center">
+  <img src="images/esp_onboard_led.png" width="600"/>
+</div>
 3. 내장된 파란 LED가 켜지면 **D1** 버튼을 뗍니다.  
 4. 이제 보드는 SSID 가 "**OMO_R1M**" 이고 패스워드가 "**password**" 인 AP로 전환됩니다.
 5. 스마트폰 혹은 태블릿을 열고 위와 같이 설정된 AP를 찾아서 접속합니다.  
