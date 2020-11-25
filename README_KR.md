@@ -106,12 +106,17 @@ git clone https://github.com/omorobot/r1mini_espControl.git
 ESP32 모듈에 할당된 IP를 모르는 경우 다음을 수행하여 AP 모드로 변경하여 내부 IP 주소를 확인할 수 있습니다.  
 
 1. 로봇을 켭니다.  
+
 2. **D1** 버튼을 누른 후 ESP32 **내장LED** 가 켜질때까지 기다립니다.  
 <div align="center">
   <img src="images/esp_onboard_led.jpg" width="400"/>
 </div>
+
 3. 내장된 파란 LED가 켜지면 **D1** 버튼을 뗍니다.  
-4. 이제 보드는 SSID 가 "**OMO_R1M**" 이고 패스워드가 "**password**" 인 AP로 전환됩니다.
+
+
+4. 이제 보드는 SSID 가 "**OMO_R1M**" 이고 패스워드가 "**password**" 인 AP로 전환됩니다.  
+
 5. 스마트폰 혹은 태블릿을 열고 위와 같이 설정된 AP를 찾아서 접속합니다.  
 <div align="center">
   <img src="images/search_r1m.jpg" width="400"/>
