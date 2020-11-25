@@ -108,7 +108,7 @@ ESP32 모듈에 할당된 IP를 모르는 경우 다음을 수행하여 AP 모�
 1. 로봇을 켭니다.  
 2. **D1** 버튼을 누른 후 ESP32 **내장LED** 가 켜질때까지 기다립니다.  
 <div align="center">
-  <img src="images/esp_onboard_led.png" width="600"/>
+  <img src="images/esp_onboard_led.jpg" width="400"/>
 </div>
 3. 내장된 파란 LED가 켜지면 **D1** 버튼을 뗍니다.  
 4. 이제 보드는 SSID 가 "**OMO_R1M**" 이고 패스워드가 "**password**" 인 AP로 전환됩니다.
