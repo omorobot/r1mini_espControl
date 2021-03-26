@@ -33,7 +33,7 @@ unsigned long             btn_pressed_millis =    0;
 IPAddress                 local_ip;       // Local IP address assigned by Router
 bool                      is_local_ip_sent =      false;
 bool                      is_AP_mode_set =        false;
-WiFiManager               wifiManager;
+WiFiManager               wm;
 const char*               host =                  "r1mini";
 //For parsing json format
 DynamicJsonDocument       d_doc(1024);                  // For JSON 6.0 over
@@ -121,8 +121,9 @@ void run_AP_config(void) {
   Serial.println("Enter to AP configuration");
   server.stop();      //Stop server for Config portal to be working
   webSocket.close();  //Stop socket as well
-  wifiManager.setConfigPortalTimeout(300); //If no access point name has been previously entered disable timeout.
-  if (!wifiManager.startConfigPortal("ESP8266_R1mini", "password"))
+  Serial.println("Starting config portal");
+  wm.setConfigPortalTimeout(300); //If no access point name has been previously entered disable timeout.
+  if (!wm.startConfigPortal("ESP8266_R1mini", "password"))
   { 
     Serial.println("Not connected to WiFi but continuing anyway.");
   } else {
@@ -159,6 +160,7 @@ void buttonHandler_loop(void) {
 
 void setup() {
   // put your setup code here, to run once:
+  WiFi.mode(WIFI_STA); // explicitly set mode, esp defaults to STA+AP  
   Serial.begin(115200);
   swSer.begin(115200, SWSERIAL_8N1, SWSER_RX_PIN, SWSER_TX_PIN, false, 256);
   // Initialize the output variables as outputs
