@@ -1,3 +1,0 @@
-[submodule "src/WiFiManager"]
-	path = src/WiFiManager
-	url = https://github.com/omorobot/WiFiManager.git
