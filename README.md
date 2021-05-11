@@ -8,6 +8,21 @@ For Korean, refer to [README_KR](README_KR.md) document.
 
 This repsitory demonstrate how to connect the onboard ESP8266 board to a 2.4GHz wifi router and open a web server for user to send control message to the robot.
 
+With this project, user can do followings with R1mini.  
+
+- Remotely controlling the robot.  
+<div align="center">
+ <img src="images/REMOTE.gif" width="500"/>
+</div>
+
+- Change colors onboard RGB leds or turn on/off headlights.  
+
+<div align="center">
+ <img src="images/RGB_LED.gif" width="500"/>
+ <img src="images/HEAD_LED.gif" width="500"/>
+</div>
+
+
 Below video shows how it works when you upload this sketch to the board.
 [![](https://img.youtube.com/vi/ax5wqK-Vj8c/0.jpg)](https://www.youtube.com/watch?v=ax5wqK-Vj8c)
 
