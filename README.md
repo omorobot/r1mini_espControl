@@ -75,7 +75,8 @@ You can check the sketchbook folder in File > Preferences
 ## How to connect to a new WiFi router
 
 ### Change to AP mode
-1. Power on the robot.
+1. Power on the robot.  
+
 <a name="B2">2. </a>Press **D1** button and hold until **onboard** Blue LED turn on.  
   <div align="center">
     <img src="images/esp_onboard_led.jpg" width="400"/>
